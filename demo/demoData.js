@@ -9,7 +9,7 @@ export const columns = [
         name: 'Email'
     },
     {
-        name: 'Company'
+        name: 'Playtime'
     }
 ];
 

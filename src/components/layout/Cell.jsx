@@ -9,10 +9,12 @@ class Cell extends Component {
         data: React.PropTypes.String
     }
 
+    // row[k] is a string, cellData
     render() {
 
         const { cellData } = this.props;
 
+        // stick that data in a table division!
         return (
             <td>
                 { cellData }

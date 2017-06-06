@@ -6,6 +6,8 @@ import Row from './layout/Row.jsx';
 
 class Grid extends Component {
 
+    // P How is defaltProps used?
+    // I This is a way to describe the model for testing
     static defaultProps = {
         columns: React.PropTypes.arrayOf(React.PropTypes.Object).isRequired,
         data: React.PropTypes.arrayOf(React.PropTypes.Object),
@@ -14,7 +16,9 @@ class Grid extends Component {
 
     render() {
 
+        //  state object now in this.props 
         const { columns, data } = this.props;
+
 
         const HeaderProps = {
             columns: columns
@@ -25,6 +29,8 @@ class Grid extends Component {
             data: data
         };
 
+        // P what is the ...?
+        // R a way to automate passing all properties into Header.jsx, Row.jsx
         return (
             <div>
                 <table>
@@ -39,6 +45,8 @@ class Grid extends Component {
 }
 
 function mapStateToProps() {
+    // P what does this object catch?
+    // R the state object
     return {};
 }
 
