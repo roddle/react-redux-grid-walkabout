@@ -3,15 +3,21 @@ import { connect } from 'react-redux';
 import store from '../../store/store';
 import { keyGenerator, keyFromObject } from '../../util/keygenerator';
 import Cell from './Cell.jsx';
+import { prefix } from '../../util/prefix';
+import { emptyFn } from '../../util/emptyFn';
+import '../../style/components/row.styl';
+import { CLASS_NAMES } from '../../constants/GridConstants';
 
 class Row extends Component {
 
     static defaultProps = {
         columns: React.PropTypes.arrayOf(React.PropTypes.Object).isRequired,
-        data: React.PropTypes.arrayOf(React.PropTypes.Object)
+        data: React.PropTypes.arrayOf(React.PropTypes.Object),
+        handleCellClick: React.PropTypes.func,
+        handleCellDblClick: React.PropTypes.func
     }
 
-    getRows(row) {
+    getRows(row, handleCellClick, handleCellDblClick) {
 
         // use the keys of this row object to spit out a bunch of cells
         // access row[k] in Cell.jsx

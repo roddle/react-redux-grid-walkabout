@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import store from '../store/store';
 import Header from './layout/Header.jsx';
 import Row from './layout/Row.jsx';
+import '../style/components/grid.styl';
+import { prefix } from '../util/prefix';
+import { CLASS_NAMES } from '../constants/GridConstants';
 
 class Grid extends Component {
 
@@ -16,24 +19,31 @@ class Grid extends Component {
 
     render() {
 
-        //  state object now in this.props 
-        const { columns, data } = this.props;
+        //  state object is in this.props 
+        const { columns, data, handleCellClick, handleCellDblClick } = this.props;
 
 
         const HeaderProps = {
-            columns: columns
+            columns
         };
 
         const RowProps = {
-            columns: columns,
-            data: data
+            columns,
+            data,
+            handleCellClick,
+            handleCellDblClick
         };
+
+        const tableProps = {
+            className: prefix(CLASS_NAMES.TABLE),
+            cellSpacing: 0
+        }
 
         // P what is the ...?
         // R a way to automate passing all properties into Header.jsx, Row.jsx
         return (
             <div>
-                <table>
+                <table {...tableProps}>
                     <thead>
                         <Header { ...HeaderProps } />
                     </thead>
