@@ -7,7 +7,7 @@ const initialState = fromJS({
 });
 
 
-export default function game(state = initialState, action) {
+export default function grid(state = initialState, action) {
     switch (action.type) {
 
     default:

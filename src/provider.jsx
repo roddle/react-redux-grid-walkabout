@@ -14,11 +14,13 @@ const gridData = {
   columns,
   data,
   onCellClick,
-  onCellDblClick
+  onCellDblClick,
+  pageSize,
+  enablePaging
 }
 
 export default (
     <Provider store={ store }>
-        <Grid {...gridData} />
+        <Grid { ...gridData } />
     </Provider>
 );  
