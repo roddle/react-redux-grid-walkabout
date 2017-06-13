@@ -10,31 +10,24 @@ import { CLASS_NAMES } from '../constants/GridConstants';
 
 class Grid extends Component {
 
-    // P How is defaltProps used?
-    // I This is a way to describe the model for testing
     static defaultProps = {
         columns: React.PropTypes.arrayOf(React.PropTypes.Object).isRequired,
         data: React.PropTypes.arrayOf(React.PropTypes.Object),
         dataSource: React.PropTypes.string,
         store: React.PropTypes.Func,
         pageSize: 25,
-        startPage: 0,
-        endPage: 1,
-        enablePaging: true
+        events: React.PropTypes.Object,
+        plugins: React.PropTypes.Object
     }
 
     render() {
 
-        //  state object is in this.props 
         const { 
             columns, 
             data, 
-            handleCellClick, 
-            handleCellDblClick,
             pageSize,
-            enablePaging,
-            startPage,
-            endPage
+            plugins,
+            events
         } = this.props;
 
         const HeaderProps = {
@@ -44,12 +37,9 @@ class Grid extends Component {
         const rowProps = {
             columns,
             data,
-            handleCellClick,
-            handleCellDblClick,
+            events,
             pageSize,
-            startPage,
-            endPage,
-            enablePaging
+            plugins
         };
 
         const tableProps = {
@@ -59,17 +49,13 @@ class Grid extends Component {
 
         const pagerProps = {
             store: store,
-            startPage,
-            endPage,
             pageSize,
-            enablePaging
+            plugins
         };
 
-        // P what is the ...?
-        // R a way to automate passing all properties into Header.jsx, Row.jsx
         return (
             <div>
-                <table {...tableProps}>
+                <table { ...tableProps }>
                     <thead>
                         <Header { ...HeaderProps } />
                     </thead>
@@ -84,8 +70,6 @@ class Grid extends Component {
 }
 
 function mapStateToProps() {
-    // P what does this object catch?
-    // R the state object
     return {};
 }
 
